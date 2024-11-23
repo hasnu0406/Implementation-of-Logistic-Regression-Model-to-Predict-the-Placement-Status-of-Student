@@ -8,19 +8,49 @@ To write a program to implement the the Logistic Regression Model to Predict the
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1. Load the California Housing dataset using fetch_california_housing().
-2. Prepare the features 'x' (first 3 columns) and targets 'y' (column 6 and target).
-3. Split the data into training and testing sets using train_test_split().
-4. Initialize StandardScaler for scaling features and targets (scaler_x and scaler_y).
-5. Scale the input features (x_train, x_test) using scaler_x.fit_transform() and scaler_x.transform().
-6. Scale the target values (y_train, y_test) using scaler_y.fit_transform() and scaler_y.transform().
-7. Initialize the SGDRegressor model with max_iter=1000 and tol=1e-3.
-8. Wrap SGDRegressor with MultiOutputRegressor to handle multiple target variables.
-9. Fit the model on the training data: multi_output_sgd.fit(x_train, y_train).
-10. Predict the target values for the test set using the trained model: multi_output_sgd.predict(x_test).
-11. Inverse transform the predicted values and actual values to their original scales.
-12. Calculate the Mean Squared Error (MSE) between the predicted and actual target values.
-13. Print the MSE and display the first five predicted values.
+1. Import the `pandas` library to handle the dataset and load the dataset `Placement_Data.csv` using `pd.read_csv()`.
+
+2. Display the first few rows of the dataset using the `head()` function for an initial preview.
+
+3. Create a copy of the original dataset using the `copy()` method to preserve the original data.
+
+4. Drop unnecessary columns such as `sl_no` and `salary` using the `drop()` method to focus on relevant features.
+
+5. Check for missing values in the dataset using the `isnull().sum()` method to identify any data cleaning requirements.
+
+6. Check for duplicate records in the dataset using the `duplicated().sum()` method to ensure the data is unique.
+
+7. Import `LabelEncoder` from `sklearn.preprocessing` to handle categorical data.
+
+8. Apply the `LabelEncoder` to encode categorical columns such as `gender`, `ssc_b`, `hsc_b`, `hsc_s`, `degree_t`, `workex`, `specialisation`, and `status` into numerical values.
+
+9. Display the processed dataset after encoding to confirm the transformation.
+
+10. Separate the features (`X`) and the target variable (`y`) from the dataset.  
+    - Extract all columns except the target column as features (`X`).  
+    - Select the target column `status` as the dependent variable (`y`).
+
+11. Import `train_test_split` from `sklearn.model_selection` to split the dataset into training and testing sets.
+
+12. Split the dataset into training and testing subsets by specifying the test size (e.g., 20%) and a random state for reproducibility.
+
+13. Import `LogisticRegression` from `sklearn.linear_model` to build the logistic regression model.
+
+14. Initialize the logistic regression model with the `liblinear` solver.
+
+15. Train the logistic regression model using the training features (`x_train`) and the target variable (`y_train`) with the `fit()` method.
+
+16. Predict the target variable on the testing data (`x_test`) using the `predict()` method.
+
+17. Calculate the accuracy of the model using `accuracy_score` from `sklearn.metrics` by comparing the true labels (`y_test`) and the predicted labels (`y_pred`).
+
+18. Compute the confusion matrix using `confusion_matrix` from `sklearn.metrics` to evaluate the performance of the classification model.
+
+19. Generate a classification report using `classification_report` from `sklearn.metrics` to view precision, recall, F1-score, and support for each class.
+
+20. Print the classification report to analyze the model's performance.
+
+21. Make a prediction for a new data point by passing the feature values as a list to the `predict()` method of the trained model.
 
 ## Program:
 ```Python
